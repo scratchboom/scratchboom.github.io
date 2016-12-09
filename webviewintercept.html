@@ -1,10 +1,21 @@
 <html>
-<head>
-<title>Try to intercept json content from webiew</title>
-</head>
+  <head>
+    <title>Try to intercept json content from webiew</title>
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+
+  </head>
 
 <body>
-helo
+  <button id="btn">Push Me!</button>
+  
+  <div id="content">Content</div>
+  
+  <script>
+    $("#btn").onclick(function(){$("content").text("test");})
+  </script>
 </body>
 
 </html
