@@ -17,13 +17,10 @@
     $("#btn").click(function(){
       $("#content").text("test");
       
-      $.ajax({
-        dataType: "json",
-        url: "webviewintercept.json",
-        data: "",
-        success: function() {
-           $("#content").text("got json!");
-        }
+      $.ajax("webviewintercept.json")
+        .done(function() {
+          $("#content").text("got json!");
+        })
       });
 
     });
