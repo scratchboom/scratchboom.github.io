@@ -14,7 +14,19 @@
   <div id="content">Content</div>
   
   <script>
-    $("#btn").onclick(function(){$("#content").text("test");})
+    $("#btn").onclick(function(){
+      $("#content").text("test");
+      
+      $.ajax({
+        dataType: "json",
+        url: "webviewintercept.json",
+        data: "",
+        success: function() {
+           $("#content").text("got json!");
+        }
+      });
+
+    });
   </script>
 </body>
 
