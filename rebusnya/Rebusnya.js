@@ -24,6 +24,9 @@
   var toList = Kotlin.kotlin.collections.toList_7wnvza$;
   var Array_0 = Array;
   var collectionSizeOrDefault = Kotlin.kotlin.collections.collectionSizeOrDefault_ba2ldo$;
+  var joinToString_0 = Kotlin.kotlin.collections.joinToString_xqrb1d$;
+  var equals = Kotlin.equals;
+  var Pair = Kotlin.kotlin.Pair;
   var toShort = Kotlin.toShort;
   var HashSet_init = Kotlin.kotlin.collections.HashSet_init_287e2$;
   var emptyList = Kotlin.kotlin.collections.emptyList_287e2$;
@@ -173,6 +176,38 @@
     }
     return toList(res);
   }
+  var RUS_LETTERS;
+  function findZitaGita(words, dicSet) {
+    var tmp$, tmp$_0, tmp$_1, tmp$_2;
+    var res = ArrayList_init();
+    tmp$ = words.iterator();
+    while (tmp$.hasNext()) {
+      var word = tmp$.next();
+      var chars = Kotlin.charArray(word.length);
+      tmp$_0 = word.length;
+      for (var i = 0; i < tmp$_0; i++) {
+        chars[i] = word.charCodeAt(i);
+      }
+      var newWords = ArrayList_init();
+      tmp$_1 = word.length;
+      for (var i_0 = 0; i_0 < tmp$_1; i_0++) {
+        tmp$_2 = iterator(RUS_LETTERS);
+        while (tmp$_2.hasNext()) {
+          var letter = unboxChar(tmp$_2.next());
+          chars[i_0] = letter;
+          var newWord = joinToString_0(chars, '');
+          if (dicSet.contains_11rb$(newWord) && !equals(word, newWord)) {
+            newWords.add_11rb$(newWord);
+          }
+        }
+        chars[i_0] = word.charCodeAt(i_0);
+      }
+      if (!newWords.isEmpty()) {
+        res.add_11rb$(new Pair(word, newWords));
+      }
+    }
+    return res;
+  }
   var HTTP_OK;
   var dicSet;
   var dicList;
@@ -181,6 +216,7 @@
     configureNokia();
     configureCodeLock();
     configureViralMath();
+    configureZitaGita();
   }
   function configureViralMath$lambda(closure$inputLine, closure$outputContainer) {
     return function (mouseEvent) {
@@ -307,6 +343,54 @@
     clearBtn.onclick = configureNokia$lambda(inputLine, outputContainer);
     searchBtn.onclick = configureNokia$lambda_0(outputContainer, inputLine);
   }
+  function configureZitaGita$lambda(closure$inputLine, closure$outputContainer) {
+    return function (mouseEvent) {
+      closure$inputLine.value = '';
+      closure$outputContainer.innerHTML = '';
+      console.log('clear');
+      return Unit;
+    };
+  }
+  function configureZitaGita$lambda$lambda(closure$foundWord) {
+    return function ($receiver) {
+      appendText($receiver, closure$foundWord.toString());
+      return Unit;
+    };
+  }
+  function configureZitaGita$lambda_0(closure$outputContainer, closure$inputLine) {
+    return function (mouseEvent) {
+      var tmp$;
+      closure$outputContainer.innerHTML = '';
+      var $receiver = split(closure$inputLine.value, [' ']);
+      var destination = ArrayList_init();
+      var tmp$_0;
+      tmp$_0 = $receiver.iterator();
+      while (tmp$_0.hasNext()) {
+        var element = tmp$_0.next();
+        if (element.length > 0)
+          destination.add_11rb$(element);
+      }
+      var words = destination;
+      var foundWords = findZitaGita(words, dicSet);
+      console.log('found words ' + foundWords);
+      tmp$ = foundWords.iterator();
+      while (tmp$.hasNext()) {
+        var foundWord = tmp$.next();
+        console.log(foundWord);
+        appendElement(closure$outputContainer, 'div', configureZitaGita$lambda$lambda(foundWord));
+      }
+      return Unit;
+    };
+  }
+  function configureZitaGita() {
+    var tmp$, tmp$_0, tmp$_1, tmp$_2;
+    var searchBtn = Kotlin.isType(tmp$ = document.getElementById('zitaGitaSearchBtn'), HTMLButtonElement) ? tmp$ : throwCCE();
+    var clearBtn = Kotlin.isType(tmp$_0 = document.getElementById('zitaGitaClearBtn'), HTMLButtonElement) ? tmp$_0 : throwCCE();
+    var inputLine = Kotlin.isType(tmp$_1 = document.getElementById('zitaGitaInputLine'), HTMLInputElement) ? tmp$_1 : throwCCE();
+    var outputContainer = Kotlin.isType(tmp$_2 = document.getElementById('zitaGitaOutputContainer'), HTMLDivElement) ? tmp$_2 : throwCCE();
+    clearBtn.onclick = configureZitaGita$lambda(inputLine, outputContainer);
+    searchBtn.onclick = configureZitaGita$lambda_0(outputContainer, inputLine);
+  }
   function loadWords$lambda(closure$req, closure$loadingDiv, closure$contentDiv) {
     return function (loadEvent) {
       var tmp$;
@@ -352,6 +436,12 @@
   package$rebusnya.subWords_bm4lxs$ = subWords;
   package$rebusnya.cartesianProduct_n7b3v4$ = cartesianProduct;
   package$rebusnya.findViralMath_qif5s$ = findViralMath;
+  Object.defineProperty(package$rebusnya, 'RUS_LETTERS', {
+    get: function () {
+      return RUS_LETTERS;
+    }
+  });
+  package$rebusnya.findZitaGita_sx1o23$ = findZitaGita;
   Object.defineProperty(package$rebusnya, 'HTTP_OK', {
     get: function () {
       return HTTP_OK;
@@ -372,6 +462,7 @@
   });
   package$rebusnya.main = main;
   NOKIA_LETTERS = ['', '', '\u0430\u0431\u0432\u0433', '\u0434\u0435\u0436\u0437', '\u0438\u0439\u043A\u043B', '\u043C\u043D\u043E\u043F', '\u0440\u0441\u0442\u0443', '\u0444\u0445\u0446\u0447', '\u0448\u0449\u044A\u044B', '\u044C\u044D\u044E\u044F'];
+  RUS_LETTERS = '\u0430\u0431\u0432\u0433\u0434\u0435\u0451\u0436\u0437\u0438\u0439\u043A\u043B\u043C\u043D\u043E\u043F\u0440\u0441\u0442\u0443\u0444\u0445\u0446\u0447\u0448\u0449\u044C\u044B\u044A\u044D\u044E\u044F';
   HTTP_OK = toShort(200);
   dicSet = HashSet_init();
   dicList = emptyList();
