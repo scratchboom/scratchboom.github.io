@@ -1,0 +1,25 @@
+<html>
+  <head>Dynamic content</head>
+  
+  <body>
+    <div id="main">
+    <script>
+      function utf8_to_b64(str) {
+	      return window.btoa(unescape(encodeURIComponent(str)));
+      }
+
+      function b64_to_utf8(str) {
+	      return decodeURIComponent(escape(window.atob(str)));
+      }
+      
+      var strings = ["0JTQuNCy0LDQvS3QutGA0L7QstCw0YLRjCDQmtCw0LzQtdC70L7Rgg==",
+                    "0JTQuNCy0LDQvS3QutGA0L7QstCw0YLRjCDQkdGA0YPQutC70LjQvQ==",
+                    "0J/QuNGB0YzQvNC10L3QvdGL0Lkg0YHRgtC+0LsgU0NBTkRJQ0Eg0KXQvtGA0YLQtdC9",
+                    "0JbRg9GA0L3QsNC70YzQvdGL0Lkg0YHRgtC+0Lsg0JzQsNGA0YLQuNC9"];
+      
+      var item = b64_to_utf8(strings[Math.floor(Math.random() * strings.length)]);
+      console.log(item);
+      document.getElementById("main").innerHTML = "<br>" + item + "<br>";
+    </script>
+  </body>
+</html>
