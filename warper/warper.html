@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Warper</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            background-color: #000000;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            image-rendering: pixelated;
+        }
+
+        html, body, canvas {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            touch-action: none;
+        }
+
+
+    </style>
+
+</head>
+
+<body style="margin:0; padding:0; background-color: #000000; overscroll-behavior-y: contain;" oncontextmenu="return false;">
+
+<script>
+    window.loadingStartTime = performance.now() / 1000.0
+
+</script>
+
+<canvas id="glcanvas" style="display:block;width:100vw;"></canvas>
+
+<script src="Warper.js"></script>
+
+<script>
+    Warper.sw.warper.warperMain();
+</script>
+
+</body>
+</html>
