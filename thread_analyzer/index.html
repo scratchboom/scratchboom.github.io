@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>Thread Analyzer</title>
+</head>
+
+<style>
+    body {
+       width: 100vw;
+       height: 100vh;
+    }
+
+   #thread_dump_textarea {
+       width: 100vw;
+       height: 50vh;
+   }
+   #diagram {
+       width: 100vw;
+       height: 50vh;
+       object-fit: scale-down;
+   }
+</style>
+
+<script src="ThreadAnalyzer.js">
+</script>
+
+<body>
+
+<textarea maxlength="10000000" id="thread_dump_textarea" placeholder="Copy-Paste your thread dump here"></textarea>
+
+<img src="" id="diagram" alt=""/>
+
+</body>
+<script>
+    ThreadAnalyzer.thread.analyzer.main()
+</script>
+
+</html>
