@@ -1,0 +1,58 @@
+<html>
+
+<head>
+	<style>
+	body {padding: 0;}
+	label   {font-size: 24px; color: black; margin-top: 20px; margin-bottom: 20px;}
+	input    {font-size: 40px;}
+	#calc {outline: 1px solid black; padding: 10px; display: inline-block; border-radius: 10px;}
+	</style>
+</head>
+
+
+
+<body>
+
+<div id="calc">
+<label>Нужно метров</label>
+<br>
+<input id="meters" value="1.0" size="8"/>
+
+<br>
+<br>
+
+<label>Витков</label>
+<br>
+<input id="turns"  size="8" readonly/>
+
+</div>
+
+</body>
+
+<script>
+var metersInput = document.getElementById("meters");
+var turnsOutput = document.getElementById("turns");
+
+
+function recalc() {
+  console.log(metersInput.value);
+  const d = 0.09;//9 cm filament coil
+  var turnsLeft = Number(metersInput.value)/(Math.PI * 0.09)
+  turnsOutput.value = turnsLeft.toFixed(2);
+}
+
+recalc();
+
+metersInput.addEventListener("change", function(){
+  console.log("onchange")
+  recalc();
+})
+
+metersInput.addEventListener("input", function(){
+  console.log("oninput")
+  recalc();
+})
+</script>
+
+
+</html>
